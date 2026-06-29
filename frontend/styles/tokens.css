@@ -1,0 +1,203 @@
+/* ============================================================
+   NextCharge Design Tokens
+   All visual values in one place. Never use raw values in components.
+   ============================================================ */
+
+:root {
+  /* ── Colors ─────────────────────────────────────────────── */
+
+  /* Primary */
+  --color-navy-900: #020B4D;
+  --color-navy-800: #080f35;
+  --color-navy-700: #141B7D;
+
+  /* Accent */
+  --color-orange-500: #FF6A22;
+  --color-orange-600: #FF7A30;
+
+  /* Dark Background (used in hero) */
+  --clr-bg-dark: #060B1F;
+
+
+  /* Neutrals */
+  --color-offwhite: #F2F1EB;
+  --color-sand: #E3E0D1;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* Semantic */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* Text */
+  --color-text-primary: var(--color-navy-900);
+  --color-text-secondary: #6B7280;
+  /* gray-500 */
+  --color-text-tertiary: #9CA3AF;
+  /* gray-400 */
+  --color-text-on-dark: #FFFFFF;
+  --color-text-on-dark-muted: #C8CCDB;
+  --color-text-on-dark-dim: rgba(255, 255, 255, 0.4);
+
+  /* Borders */
+  --color-border-light: rgba(255, 255, 255, 0.25);
+  --color-border-lighter: rgba(255, 255, 255, 0.1);
+  --color-border-card: #F3F4F6;
+  /* gray-100 */
+
+  /* ── Typography ─────────────────────────────────────────── */
+
+  --font-primary: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Display */
+  --text-display-xl: 6rem;
+  /* 96px — Hero desktop */
+  --text-display-lg: 3.75rem;
+  /* 60px — Hero mobile / large headers */
+
+  /* Headings */
+  --text-heading-xl: 3rem;
+  /* 48px — Section titles */
+  --text-heading-lg: 2.25rem;
+  /* 36px — Sub-section titles */
+  --text-heading-md: 1.5rem;
+  /* 24px — Card titles */
+  --text-heading-sm: 1.25rem;
+  /* 20px — Sub-card headings */
+
+  /* Body */
+  --text-body-lg: 1.25rem;
+  /* 20px */
+  --text-body-md: 1rem;
+  /* 16px */
+  --text-body-sm: 0.875rem;
+  /* 14px */
+  --text-body-xs: 0.75rem;
+  /* 12px */
+
+  /* Micro */
+  --text-label: 0.625rem;
+  /* 10px — Micro labels */
+  --text-caption: 0.6875rem;
+  /* 11px */
+
+  /* Font weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
+
+  /* Line heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+  --leading-loose: 1.8;
+
+  /* Letter spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-widest: 0.1em;
+
+  /* ── Spacing ────────────────────────────────────────────── */
+
+  --space-1: 0.25rem;
+  /* 4px */
+  --space-2: 0.5rem;
+  /* 8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
+  --space-16: 4rem;
+  /* 64px */
+  --space-20: 5rem;
+  /* 80px */
+  --space-24: 6rem;
+  /* 96px */
+  --space-32: 8rem;
+  /* 128px */
+
+  /* Section spacing */
+  --section-padding-lg: var(--space-32);
+  /* 128px — major sections */
+  --section-padding-md: var(--space-24);
+  /* 96px — secondary sections */
+  --section-padding-sm: var(--space-20);
+  /* 80px — compact sections */
+
+  /* ── Layout ─────────────────────────────────────────────── */
+
+  --container-max: 80rem;
+  /* 1280px — max-w-7xl */
+  --container-gutter: var(--space-6);
+  /* 24px */
+
+  /* ── Border Radius ──────────────────────────────────────── */
+
+  --radius-sm: 0.75rem;
+  /* 12px — icon containers */
+  --radius-md: 1rem;
+  /* 16px — widgets, inputs */
+  --radius-lg: 1.5rem;
+  /* 24px — standard cards */
+  --radius-xl: 2.5rem;
+  /* 40px — feature cards, review cards */
+  --radius-2xl: 3rem;
+  /* 48px — stats bar, map, phone */
+  --radius-3xl: 3.5rem;
+  /* 56px — phone mockup shell */
+  --radius-pill: 9999px;
+  /* pill buttons */
+  --radius-button: 14px;
+  /* 14px — approved buttons */
+
+  /* ── Shadows ────────────────────────────────────────────── */
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-glow-orange: 0 10px 30px rgba(255, 106, 34, 0.25);
+  --shadow-glow-orange-sm: 0 10px 15px -3px rgba(255, 106, 34, 0.2);
+  --shadow-glow-orange-hover: 0 0 20px rgba(255, 106, 34, 0.5);
+  --shadow-phone: 0 50px 100px -20px rgba(7, 11, 69, 0.3);
+
+  /* ── Transitions ────────────────────────────────────────── */
+
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-reveal: 800ms;
+
+  /* ── Z-Index Scale ──────────────────────────────────────── */
+
+  --z-base: 0;
+  --z-above: 10;
+  --z-widget: 20;
+  --z-sticky: 40;
+  --z-overlay: 50;
+  --z-navbar: 100;
+  --z-modal: 200;
+}

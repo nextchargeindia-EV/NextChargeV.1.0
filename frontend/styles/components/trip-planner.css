@@ -1,0 +1,518 @@
+/* ============================================================
+   Component: Trip Planner
+   Dark section with storytelling timeline + route dashboard.
+   ============================================================ */
+
+.trip-planner {
+  padding: var(--section-padding-lg) 0;
+  background: #060B1F;
+  position: relative;
+  overflow: hidden;
+}
+
+.trip-planner__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  opacity: 0.05;
+  filter: grayscale(1);
+}
+
+.trip-planner__grid {
+  position: relative;
+  z-index: var(--z-above);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-20);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .trip-planner__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Left: Timeline ───────────────────────────────────────── */
+
+.trip-timeline {
+  position: relative;
+  padding-left: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* Vertical line */
+.trip-timeline::before {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-2);
+  bottom: var(--space-2);
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Timeline stop */
+.trip-stop {
+  position: relative;
+}
+
+.trip-stop__dot {
+  position: absolute;
+  left: calc(-1 * var(--space-8) + 2px);
+  top: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  border: 4px solid #060B1F;
+}
+
+.trip-stop__dot--start {
+  background: var(--color-success);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+}
+
+.trip-stop__dot--charge {
+  background: var(--color-orange-500);
+  box-shadow: 0 0 15px rgba(255, 90, 31, 0.5);
+}
+
+.trip-stop__dot--end {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.trip-stop__label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  margin-bottom: var(--space-1);
+}
+
+.trip-stop__label--start  { color: var(--color-success); }
+.trip-stop__label--charge { color: var(--color-orange-500); }
+.trip-stop__label--end    { color: rgba(255, 255, 255, 0.4); }
+
+.trip-stop__name {
+  color: var(--color-white);
+  font-weight: var(--weight-black);
+  font-size: var(--text-heading-sm);
+}
+
+.trip-stop__meta {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-medium);
+}
+
+/* Charging stop card */
+.trip-stop--card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 90, 31, 0.3);
+}
+
+.trip-stop--card .trip-stop__dot {
+  top: var(--space-8);
+}
+
+.trip-stop__card-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trip-stop__duration {
+  text-align: right;
+}
+
+.trip-stop__duration-value {
+  color: var(--color-white);
+  font-weight: var(--weight-black);
+  font-size: var(--text-body-lg);
+  display: block;
+}
+
+.trip-stop__duration-label {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+}
+
+/* ── Right: Route Dashboard ───────────────────────────────── */
+
+.route-dashboard {
+  padding: var(--space-12);
+  border-radius: var(--radius-3xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.route-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-10);
+}
+
+.route-dashboard__title {
+  color: var(--color-white);
+  font-weight: var(--weight-black);
+  font-size: var(--text-heading-md);
+}
+
+.route-dashboard__vehicle-badge {
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  color: var(--color-white);
+  font-size: var(--text-body-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Route visualization */
+.route-dashboard__map {
+  position: relative;
+  height: auto;
+  margin-bottom: var(--space-10);
+  background: var(--color-navy-800);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  overflow-x: auto;
+  display: block;
+}
+
+.route-dashboard__map svg {
+  min-width: 580px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.trip-route-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.route-dashboard__map-labels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0 var(--space-10) var(--space-4);
+}
+
+.route-dashboard__map-label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-bold);
+}
+
+/* Stats grid */
+.route-dashboard__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+
+.route-stat {
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.route-stat__label {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-label);
+  font-weight: var(--weight-black);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.route-stat__value {
+  color: var(--color-white);
+  font-weight: var(--weight-black);
+  font-size: var(--text-heading-md);
+}
+
+.route-stat__value--green {
+  color: var(--color-success);
+}
+
+.route-stat__unit {
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-bold);
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tighter);
+}
+
+/* ── Planner Layout ──────────────────────────────────────── */
+
+.planner-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+}
+
+@media (min-width: 1024px) {
+  .planner-layout {
+    grid-template-columns: 380px 1fr;
+  }
+}
+
+.planner-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+}
+
+.planner-card h3 {
+  color: var(--color-white);
+  font-weight: var(--weight-black);
+  font-size: var(--text-heading-sm);
+  margin-bottom: var(--space-6);
+}
+
+.planner-form .form-group label {
+  color: var(--color-text-on-dark-muted);
+}
+
+.planner-form .form-group input,
+.planner-form .form-group select {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.planner-form .btn--primary {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-top: var(--space-4);
+}
+
+/* Results container */
+.results-container {
+  display: none;
+}
+
+.results-container.active {
+  display: block;
+}
+
+/* Timeline container */
+.timeline-container {
+  margin-top: var(--space-10);
+  padding-top: var(--space-10);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeline-container h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: var(--weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-white);
+}
+
+/* Amenity badges */
+.amenities-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.amenity-badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-on-dark-muted);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-body-xs);
+  font-weight: var(--weight-semibold);
+}
+
+@media (max-width: 600px) {
+  .route-dashboard__stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .trip-stop__card-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  
+  .trip-stop__duration {
+    text-align: left;
+    margin-top: var(--space-2);
+  }
+  
+  .route-dashboard {
+    padding: var(--space-6);
+  }
+}
+
+/* Visual Trip Route Map preview */
+.trip-route-map {
+  position: relative;
+  background: #0D1B2E;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border-lighter);
+  aspect-ratio: 16 / 10;
+  height: auto;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.trip-route-map .map-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.trip-route-map .map-marker__pin {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-white);
+  color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+  font-size: 18px;
+}
+
+.trip-route-map .map-marker.start .map-marker__pin {
+  background: var(--color-success);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+}
+
+.trip-route-map .map-marker.charge .map-marker__pin {
+  background: var(--color-orange-500);
+  box-shadow: 0 0 15px rgba(255, 106, 34, 0.6);
+}
+
+.trip-route-map .map-marker.end .map-marker__pin {
+  background: var(--color-info);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+}
+
+.trip-route-map .map-marker__label {
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  white-space: nowrap;
+}
+
+/* Route path line inside map overlay */
+.trip-route-path-line {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Route Map Preview Overlay */
+.map-preview-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(6, 11, 31, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  max-width: 280px;
+  z-index: 20;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.map-preview-overlay__icon {
+  font-size: 32px;
+  color: var(--color-orange-500);
+  margin-bottom: var(--space-2);
+}
+
+.map-preview-overlay__title {
+  color: var(--color-white);
+  font-size: var(--text-body-lg);
+  font-weight: var(--weight-extrabold);
+  margin-bottom: var(--space-1);
+}
+
+.map-preview-overlay__text {
+  color: var(--color-text-on-dark-muted);
+  font-size: var(--text-body-xs);
+  line-height: 1.4;
+}
+
+.trip-route-map--preview {
+  margin: 0;
+}
+
+.route-stat--centered {
+  text-align: center;
+  grid-column: span 2;
+}
+
+.route-stat__value--muted {
+  font-size: var(--text-body-md);
+  color: var(--color-text-on-dark-muted);
+}
+
+.trip-planner h1 {
+  color: var(--color-white) !important;
+}
+
+@media (max-width: 768px) {
+  .map-preview-overlay {
+    width: 85%;
+    max-width: 250px;
+    padding: var(--space-4);
+  }
+  
+  .map-preview-overlay__icon {
+    font-size: 24px;
+    margin-bottom: var(--space-1);
+  }
+
+  .map-preview-overlay__title {
+    font-size: var(--text-body-md);
+  }
+
+  .map-preview-overlay__text {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+}
+
+
+
+

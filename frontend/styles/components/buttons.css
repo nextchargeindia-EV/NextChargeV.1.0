@@ -1,0 +1,149 @@
+/* ============================================================
+   Component: Buttons
+   Primary (orange), secondary (glass), tertiary (text link),
+   and nav CTA variants.
+   ============================================================ */
+
+/* Shared button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-family: var(--font-primary);
+  font-weight: var(--weight-bold);
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-default);
+  white-space: nowrap;
+  border: none;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn .material-symbols-outlined,
+.btn svg {
+  flex-shrink: 0;
+}
+
+/* ── Primary ──────────────────────────────────────────────── */
+
+.btn--primary {
+  background: var(--color-orange-500);
+  color: var(--color-white);
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--text-body-lg);
+  box-shadow: var(--shadow-2xl), 0 10px 30px -5px rgba(255, 90, 31, 0.3);
+}
+
+.btn--primary:hover {
+  background: var(--color-orange-600);
+  transform: scale(1.05);
+}
+
+/* ── Secondary (Glass) ────────────────────────────────────── */
+
+.btn--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: var(--color-white);
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--text-body-lg);
+}
+
+.btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+/* ── Tertiary (Link-style) ────────────────────────────────── */
+
+.btn--tertiary {
+  background: none;
+  color: var(--color-orange-500);
+  font-weight: var(--weight-bold);
+  padding: 0;
+  gap: var(--space-2);
+  font-size: var(--text-body-md);
+  border-radius: 0;
+}
+
+.btn--tertiary:hover {
+  gap: var(--space-4);
+}
+
+.btn--tertiary .material-symbols-outlined {
+  font-size: var(--text-body-sm);
+}
+
+/* ── Nav CTA (small) ──────────────────────────────────────── */
+
+.btn--nav {
+  background: var(--color-orange-500);
+  color: var(--color-white);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-bold);
+  box-shadow: var(--shadow-glow-orange-sm);
+}
+
+.btn--nav:hover {
+  background: var(--color-orange-600);
+  transform: scale(1.05);
+}
+
+/* ── Outline ──────────────────────────────────────────────── */
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-body-sm);
+}
+
+.btn--outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.02);
+}
+
+/* ── Dark Outline (for light bg) ──────────────────────────── */
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--color-navy-900);
+  border: 1px solid var(--color-navy-900);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-body-sm);
+}
+
+.btn--outline-dark:hover {
+  background: var(--color-navy-900);
+  color: var(--color-white);
+}
+
+/* ── Small Pill (used inside phone mockup, widgets) ───────── */
+
+.btn--pill-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: 9px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+}
+
+.btn--pill-sm:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Icon dimensions inside buttons ───────────────────────── */
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+}

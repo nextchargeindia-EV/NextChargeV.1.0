@@ -1,0 +1,184 @@
+/* ============================================================
+   Component: Home Page Find Charger Section
+   ============================================================ */
+
+.home-charger-preview {
+  padding: var(--space-20) 0;
+  background: var(--color-white);
+  --map-bg: #0D1B2E;
+  --map-road: #1A2840;
+}
+
+.home-charger-header {
+  margin-bottom: var(--space-8);
+}
+
+.home-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .home-filter-bar {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.home-filter-bar input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--text-body-sm);
+  background: var(--color-offwhite);
+  color: var(--color-navy-900);
+  outline: none;
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.home-filter-bar input[type="text"]:focus {
+  border-color: var(--color-orange-500);
+  background: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(255, 106, 34, 0.1);
+}
+
+.home-filter-row {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.home-filter-row select {
+  padding: 12px 20px 12px 16px;
+  border: 1.5px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--text-body-sm);
+  background: var(--color-offwhite);
+  color: var(--color-navy-900);
+  outline: none;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-smooth);
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23020B4D' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.home-filter-row select:focus {
+  border-color: var(--color-orange-500);
+  background-color: var(--color-white);
+}
+
+/* Split layout wrapper */
+.home-charger-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+@media (min-width: 1024px) {
+  .home-charger-layout {
+    flex-direction: row;
+    gap: var(--space-8);
+    height: 420px;
+    align-items: stretch;
+  }
+}
+
+.home-charger-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .home-charger-list-container {
+    flex: 1;
+  }
+}
+
+.home-charger-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 4px;
+}
+
+.home-charger-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.home-charger-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.home-charger-list::-webkit-scrollbar-thumb {
+  background: rgba(2, 11, 77, 0.15);
+  border-radius: var(--radius-pill);
+}
+
+.home-charger-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(2, 11, 77, 0.3);
+}
+
+/* Map Window style on Home Page */
+.home-charger-map {
+  position: relative;
+  background: var(--map-bg);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border-lighter);
+  height: 240px;
+}
+
+@media (min-width: 1024px) {
+  .home-charger-map {
+    flex: 0 0 450px;
+    width: 450px;
+    height: 100%;
+  }
+}
+
+.home-charger-explore {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+
+.home-charger-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-navy-900);
+  color: var(--color-white);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-button);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.home-charger-explore-btn:hover {
+  background: var(--color-orange-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-orange-sm);
+}
+
+.home-charger-explore-btn svg {
+  transition: transform var(--duration-normal) var(--ease-smooth);
+}
+
+.home-charger-explore-btn:hover svg {
+  transform: translateX(4px);
+}

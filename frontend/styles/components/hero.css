@@ -1,0 +1,336 @@
+/* ============================================================
+   Component: Hero Section
+   Diagonal split-screen dark hero with left visual and right content.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  background: var(--clr-bg-dark);
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Content Container */
+.hero__container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero__container {
+    position: static;
+  }
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: 48% 52%;
+    gap: 0;
+  }
+}
+
+/* Right Column: Slanted Split-Screen Image */
+.hero__visual {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .hero__visual {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__visual {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    height: 100vh;
+    z-index: 3;
+    border-radius: 0;
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .hero__visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 0% 100%,
+        var(--clr-bg-dark) 0%,
+        rgba(5, 13, 26, 0) 30%);
+    pointer-events: none;
+    z-index: 4;
+  }
+}
+
+.hero__vehicle {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 80px center;
+  filter: none;
+}
+
+/* Left Column: Text Content */
+.hero-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  padding: 40px var(--space-6);
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .hero-content {
+    padding: 120px 0 60px 64px;
+  }
+}
+
+/* Tagline Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  padding: 7px 16px;
+  margin-bottom: 28px;
+}
+
+.badge span {
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* H1 Headline */
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+  line-height: 1.05;
+}
+
+.line-white {
+  font-size: 48px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.line-orange {
+  font-size: 48px;
+  font-weight: 800;
+  color: #F97316;
+}
+
+@media (min-width: 768px) {
+
+  .line-white,
+  .line-orange {
+    font-size: 54px;
+  }
+}
+
+/* Body Paragraph */
+.body-text {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  max-width: 350px;
+  margin-bottom: 28px;
+}
+
+/* CTA Group */
+.cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 44px;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #F97316;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 50px;
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-default);
+}
+
+.btn-primary:hover {
+  background: #EA580C;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50px;
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-default);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Bottom Stats Row */
+.stats-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.stat {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0 20px 0 0;
+}
+
+.stat:last-child {
+  padding-right: 0;
+}
+
+.stat-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+}
+
+.stat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-label {
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.stat-sub {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.20);
+  align-self: center;
+  margin: 0 20px 0 0;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    height: auto;
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 0;
+  }
+  .hero__grid {
+    gap: 0;
+  }
+  .hero-content {
+    padding: 24px 20px 40px;
+  }
+  .stats-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .stat-divider {
+    display: none !important;
+  }
+  .stat {
+    flex: 1 1 0px !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    gap: 6px !important;
+    align-items: center !important;
+  }
+  .stat-icon {
+    width: 14px !important;
+    height: 14px !important;
+    margin-top: 0 !important;
+  }
+  .stat-text {
+    gap: 1px !important;
+  }
+  .stat-label {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+  }
+  .stat-sub {
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+  }
+  .hero__visual {
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .hero__vehicle {
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+}

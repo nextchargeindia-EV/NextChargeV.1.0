@@ -1,0 +1,239 @@
+/* ============================================================
+   Component: Modals & Dropdowns (Authentication and Profile)
+   ============================================================ */
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 11, 77, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  animation: fadeIn var(--duration-fast) var(--ease-default);
+}
+
+/* Modal Box */
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-2xl);
+  animation: slideUp var(--duration-normal) var(--ease-smooth);
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: transparent;
+  border: none;
+  color: var(--color-navy-900);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--duration-fast);
+}
+
+.modal-close:hover {
+  background: rgba(2, 11, 77, 0.05);
+}
+
+/* Content styling */
+.modal-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--text-heading-md);
+  font-weight: var(--weight-black);
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-1);
+}
+
+.modal-subtitle {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-normal);
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--text-body-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(2, 11, 77, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  font-family: inherit;
+  font-size: var(--text-body-sm);
+  color: var(--color-navy-900);
+  transition: all var(--duration-fast);
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-orange-500);
+  box-shadow: 0 0 0 3px rgba(255, 106, 34, 0.15);
+  background: var(--color-white);
+}
+
+.modal-submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: var(--color-orange-500);
+  color: var(--color-white);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-body-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  box-shadow: var(--shadow-glow-orange-sm);
+  margin-top: var(--space-2);
+}
+
+.modal-submit-btn:hover {
+  background: var(--color-orange-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-orange-hover);
+}
+
+.modal-toggle-text {
+  text-align: center;
+  font-size: var(--text-body-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-6);
+}
+
+.modal-toggle-text span {
+  color: var(--color-orange-500);
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+}
+
+.modal-toggle-text span:hover {
+  text-decoration: underline;
+}
+
+/* Alert Boxes */
+.alert-box {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-body-xs);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-normal);
+}
+
+.alert-box.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: var(--color-error);
+}
+
+/* ── User Profile Menu in Navbar ───────────────────────────── */
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--duration-fast);
+}
+
+.user-profile:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.user-avatar-icon {
+  color: var(--color-orange-500);
+  font-size: 24px;
+}
+
+.user-name {
+  color: var(--color-white);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-2);
+  width: 160px;
+  background: var(--color-navy-800);
+  border: 1px solid var(--color-border-lighter);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) 0;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  z-index: 1000;
+}
+
+.user-menu:hover .user-dropdown {
+  display: block;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-text-on-dark-muted);
+  text-decoration: none;
+  font-size: var(--text-body-xs);
+  font-weight: var(--weight-semibold);
+  transition: background var(--duration-fast), color var(--duration-fast);
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-white);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

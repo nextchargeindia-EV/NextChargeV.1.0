@@ -1,0 +1,316 @@
+/* ============================================================
+   Station Detail Panel
+   Slide-in panel for full station details
+   ============================================================ */
+
+.station-detail {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  position: relative;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.station-detail__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  z-index: 2;
+}
+.station-detail__close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-error);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Loading */
+.station-detail__loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8) 0;
+}
+.station-detail__loading-pulse {
+  height: 20px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.station-detail__loading-pulse--short { width: 60%; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Error */
+.station-detail__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-12) 0;
+  color: var(--color-text-secondary);
+}
+
+/* Header */
+.station-detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding-right: var(--space-10);
+}
+.station-detail__header-text {
+  flex: 1;
+  min-width: 0;
+}
+.station-detail__name {
+  font-size: var(--text-heading-md);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy-900);
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+.station-detail__operator {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  margin: var(--space-1) 0 0;
+}
+.station-detail__favorite {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-tertiary);
+  padding: var(--space-1);
+  transition: all var(--duration-fast) var(--ease-default);
+}
+.station-detail__favorite:hover,
+.station-detail__favorite--active {
+  color: #EF4444;
+  transform: scale(1.15);
+}
+
+/* Availability */
+.station-detail__availability {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-body-sm);
+}
+.station-detail__availability-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Sections */
+.station-detail__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.station-detail__section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+}
+.station-detail__section-header .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--color-orange-500);
+}
+.station-detail__address {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--leading-normal);
+}
+
+/* Connectors */
+.station-detail__connectors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.station-detail__connector-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-border-card);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast);
+}
+.station-detail__connector-card:hover {
+  background: #E5E7EB;
+}
+.station-detail__connector-type {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.station-detail__connector-icon {
+  font-size: 18px;
+}
+.station-detail__connector-name {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-body-sm);
+  color: var(--color-text-primary);
+}
+.station-detail__connector-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-body-xs);
+}
+.station-detail__connector-power {
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy-900);
+}
+.station-detail__connector-qty {
+  color: var(--color-text-tertiary);
+}
+.station-detail__connector-status {
+  font-weight: var(--weight-semibold);
+  text-transform: capitalize;
+}
+
+/* Pricing */
+.station-detail__pricing {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+.station-detail__price-value {
+  font-size: var(--text-heading-md);
+  font-weight: var(--weight-bold);
+  color: var(--color-navy-900);
+}
+.station-detail__price-unit {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Info Row */
+.station-detail__info-row {
+  display: flex;
+  gap: var(--space-6);
+}
+.station-detail__info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+}
+.station-detail__info-item .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--color-orange-500);
+}
+
+/* Actions */
+.station-detail__actions {
+  display: flex;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border-card);
+}
+.station-detail__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-body-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+  flex: 1;
+}
+.station-detail__action .material-symbols-outlined { font-size: 18px; }
+
+.station-detail__action--primary {
+  background: var(--color-orange-500);
+  color: white;
+}
+.station-detail__action--primary:hover {
+  background: var(--color-orange-600);
+  box-shadow: var(--shadow-glow-orange-sm);
+}
+.station-detail__action--secondary {
+  background: var(--color-border-card);
+  color: var(--color-text-primary);
+}
+.station-detail__action--secondary:hover {
+  background: #E5E7EB;
+}
+
+/* ── Detail Panel Overlay (on FindChargers page) ───────────── */
+.find-chargers__detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn var(--duration-normal) var(--ease-smooth);
+}
+.find-chargers__detail-panel {
+  width: 420px;
+  max-width: 90vw;
+  background: var(--color-white);
+  box-shadow: var(--shadow-2xl);
+  overflow-y: auto;
+  animation: slideInRight var(--duration-normal) var(--ease-smooth);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .find-chargers__detail-panel {
+    width: 100%;
+    max-width: 100%;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    max-height: 85vh;
+    margin-top: auto;
+    animation: slideInUp var(--duration-normal) var(--ease-smooth);
+  }
+  @keyframes slideInUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+}
